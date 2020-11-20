@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="column_number_width">30dp</dimen>
+    <dimen name="image_size">30dp</dimen>
+    <dimen name="name_width">100dp</dimen>
+    <dimen name="symbol_width">60dp</dimen>
+    <dimen name="column_name_width">190dp</dimen>
+    <dimen name="column_price_width">80dp</dimen>
+    <dimen name="column_delta_24h_width">80dp</dimen>
+    <dimen name="column_delta_7d_width">80dp</dimen>
+    <dimen name="column_market_cap_width">150dp</dimen>
+</resources>
