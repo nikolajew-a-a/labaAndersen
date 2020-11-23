@@ -11,45 +11,44 @@ import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.functions.BiFunction
 
-class MainViewModel : ViewModel {
-    private var repository : Repository
-
+class MainViewModel(private val repository: Repository) : ViewModel() {
     private var listCryptoObject : MutableLiveData<List<CryptoObject>> = MutableLiveData()
     fun getListCryptoObject() : LiveData<List<CryptoObject>> = listCryptoObject
 
-    constructor(repository: Repository) {
-        this.repository = repository
-    }
 
     @SuppressLint("CheckResult")
     fun getCryptoObjectsPrice() {
         repository.getCryptoObjectsPrice()
-            .observeOn(AndroidSchedulers.mainThread()).subscribe({ single: List<CryptoObject> ->
-            single.forEach { Log.i("mLog", it.toString())
-            listCryptoObject.value = single}
-        }) { obj: Throwable -> obj.printStackTrace()
-        }
-
-//        repository.getCryptoObjectsIcon()
-//                .observeOn(AndroidSchedulers.mainThread()).subscribe({ single: List<CryptoObject> ->
-//                    single.forEach { Log.i("mLog", it.toString())
-//                        listCryptoObject.value = single}
-//                }) { obj: Throwable -> obj.printStackTrace()
-//                }
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({ single: List<CryptoObject> -> listCryptoObject.value = single })
+                { obj: Throwable -> obj.printStackTrace() }
     }
 
-    @SuppressLint("CheckResult")
-    fun exp() {
-        Observable.zip(
-                Observable.just(
-                        "Roses", "Sunflowers", "Leaves", "Clouds", "Violets", "Plastics"),
-                Observable.just(
-                        "Red", "Yellow", "Green", "White or Grey", "Purple"),
-                BiFunction<String, String, String> { type, color ->
-                    5+5
-                    return@BiFunction "$type are $color"
-                }
-        )
-                .subscribe { v -> println("Received: $v") }
+    fun writeToDB(id: Int) {
+        repository.writeToDB(id)
+        listCryptoObject.value = this.listCryptoObject.value
+                ?.map { changeState(it, id, true) }
+    }
+
+    fun deleteFromDB(id: Int) {
+        repository.deleteFromDB(id)
+        listCryptoObject.value = this.listCryptoObject.value
+                ?.map { changeState(it, id, false) }
+    }
+
+    private fun changeState(it: CryptoObject, id: Int, newState: Boolean): CryptoObject {
+        return if (it.id == id) {
+            CryptoObject(it.id,
+                    it.name,
+                    it.symbol,
+                    it.price,
+                    it.percentChange24h,
+                    it.percentChange7d,
+                    it.marketCap,
+                    it.iconUrl,
+                    newState)
+        } else {
+            it
+        }
     }
 }

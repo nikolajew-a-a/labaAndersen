@@ -1,9 +1,8 @@
 package com.example.android.cryptoview.data.network
 
-import com.example.android.cryptoview.data.iconpojo.ResponseIcon
-import com.example.android.cryptoview.data.pricepojo.ResponsePrice
+import com.example.android.cryptoview.data.model.icon.ResponseIcon
+import com.example.android.cryptoview.data.model.price.ResponsePrice
 import io.reactivex.Single
-import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.QueryMap
 
