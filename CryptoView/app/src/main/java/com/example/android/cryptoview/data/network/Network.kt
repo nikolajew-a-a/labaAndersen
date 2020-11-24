@@ -7,17 +7,19 @@ import io.reactivex.Single
 import java.util.*
 
 class Network(private val jsonPlaceHolderApi: JsonPlaceHolderApi) {
-    private val parameters: MutableMap<String, String> = HashMap()
+    //private val parameters: MutableMap<String, String> = HashMap()
     private val KEY = "CMC_PRO_API_KEY"
     private val KEY_VALUE = "db0e805e-f47d-4cce-bb05-12dac07449f1"
 
     fun getSinglePrice(): Single<List<CryptoObject>> {
+        val parameters: MutableMap<String, String> = HashMap()
         parameters[KEY] = KEY_VALUE
         return jsonPlaceHolderApi.getPrice(parameters)
                 .map { response -> responsePriceToCryptoObject(response) }
     }
 
     fun getSingleIcon(idString: String): Single<List<CryptoObject>> {
+        val parameters: MutableMap<String, String> = HashMap()
         parameters[KEY] = KEY_VALUE
         parameters["id"] = idString
         return jsonPlaceHolderApi.getIcon(parameters)

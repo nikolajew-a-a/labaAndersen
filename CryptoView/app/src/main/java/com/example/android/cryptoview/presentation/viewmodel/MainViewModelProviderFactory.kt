@@ -9,6 +9,8 @@ class MainViewModelProviderFactory(var repository: Repository) : ViewModelProvid
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         return if (modelClass == MainViewModel::class.java) {
             MainViewModel(repository) as T
+        } else if (modelClass == FavouriteObjectsViewModel::class.java) {
+            FavouriteObjectsViewModel(repository) as T
         } else {
             throw Exception("Class is not MainViewModel")
         }

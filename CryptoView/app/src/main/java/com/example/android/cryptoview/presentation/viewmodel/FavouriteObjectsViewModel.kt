@@ -7,20 +7,20 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.android.cryptoview.data.repository.CryptoObject
 import com.example.android.cryptoview.data.repository.Repository
-import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.functions.BiFunction
 
-class MainViewModel(private val repository: Repository) : ViewModel() {
+
+class FavouriteObjectsViewModel(private val repository: Repository) : ViewModel() {
     private var listCryptoObject : MutableLiveData<List<CryptoObject>> = MutableLiveData()
     fun getListCryptoObject() : LiveData<List<CryptoObject>> = listCryptoObject
 
 
     @SuppressLint("CheckResult")
-    fun getAllCryptoObjects() {
+    fun getFavouriteCryptoObjects() {
+        Log.i("mLog_VIEWMODEL", "getFavouriteCryptoObjects" )
         repository.getCryptoObjectsPrice()
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({ single: List<CryptoObject> -> listCryptoObject.value = single })
+                .subscribe({ single: List<CryptoObject> -> listCryptoObject.value = single.filter { it.isFavourite == true } })
                 { obj: Throwable -> obj.printStackTrace() }
     }
 

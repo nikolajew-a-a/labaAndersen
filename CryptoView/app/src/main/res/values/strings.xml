@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">CryptoView</string>
+    <string name="favourite_objects">favourite_objects</string>
 </resources>

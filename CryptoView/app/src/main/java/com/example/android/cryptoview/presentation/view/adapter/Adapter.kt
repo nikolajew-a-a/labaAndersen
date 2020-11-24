@@ -11,10 +11,10 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
 import com.example.android.cryptoview.R
 import com.example.android.cryptoview.data.repository.CryptoObject
-import com.example.android.cryptoview.presentation.view.MainActivity
+import com.example.android.cryptoview.presentation.view.ItemListener
 
 
-class Adapter(private var cryptoObjects: List<CryptoObject>, private val activity: MainActivity) : RecyclerView.Adapter<Adapter.CryptoViewHolder>() {
+class Adapter(private var cryptoObjects: List<CryptoObject>, private val itemListener: ItemListener) : RecyclerView.Adapter<Adapter.CryptoViewHolder>() {
     fun setCryptoObjects(cryptoObjects: List<CryptoObject?>?) {
         this.cryptoObjects = cryptoObjects as List<CryptoObject>
         notifyDataSetChanged()
@@ -47,7 +47,7 @@ class Adapter(private var cryptoObjects: List<CryptoObject>, private val activit
         private lateinit var cryptoObject: CryptoObject
 
         init {
-            favoriteCrypto.setOnClickListener { v: View? -> activity.onClickItem(cryptoObject!!) }
+            favoriteCrypto.setOnClickListener { v: View? -> itemListener.onClickItem(cryptoObject!!) }
         }
 
         fun bind(cryptoObject: CryptoObject, position: Int) {
