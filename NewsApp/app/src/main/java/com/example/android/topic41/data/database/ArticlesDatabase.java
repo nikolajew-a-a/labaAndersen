@@ -8,7 +8,6 @@ import androidx.room.RoomDatabase;
 
 import com.example.android.topic41.domain.util.Article;
 
-
 @Database(entities = Article.class, version = 1, exportSchema = false)
 public abstract class ArticlesDatabase extends RoomDatabase {
     private static final String DB_NAME = "database";

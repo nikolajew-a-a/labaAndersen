@@ -5,13 +5,11 @@ import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
-
 import com.example.android.topic41.domain.util.Article;
 
 import java.util.List;
 
 import io.reactivex.Single;
-
 
 @Dao
 public interface ArticleDao {

@@ -1,17 +1,11 @@
 package com.example.android.topic41.data.database;
 
-import android.os.AsyncTask;
-import android.util.Log;
-
-
 import com.example.android.topic41.domain.util.Article;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.Single;
 import io.reactivex.schedulers.Schedulers;
-
 
 public class Cache implements CacheInterface{
     private ArticlesDatabase database;
