@@ -1,6 +1,5 @@
 package com.example.android.topic41.di.components;
 
-
 import android.app.Application;
 
 import com.example.android.topic41.BaseApplication;

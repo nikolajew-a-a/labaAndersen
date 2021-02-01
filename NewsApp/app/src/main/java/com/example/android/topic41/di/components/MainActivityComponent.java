@@ -5,7 +5,6 @@ import android.app.Activity;
 import com.example.android.topic41.di.modules.ArticlesViewModelModule;
 import com.example.android.topic41.di.scope.PerActivity;
 import com.example.android.topic41.presentation.view.MainActivity;
-import com.example.android.topic41.presentation.viewmodel.ArticlesViewModel;
 
 import dagger.BindsInstance;
 import dagger.Component;

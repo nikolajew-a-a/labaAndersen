@@ -1,18 +1,14 @@
 package com.example.android.topic41.data.repository;
 
-import android.util.Log;
-
-import com.example.android.topic41.domain.util.Article;
 import com.example.android.topic41.data.database.CacheInterface;
 import com.example.android.topic41.data.network.NetworkInterface;
+import com.example.android.topic41.domain.util.Article;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import io.reactivex.Single;
-
-
 
 public class ArticlesRepository implements ArticlesRepositoryInterface {
     private NetworkInterface network;

@@ -15,13 +15,15 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.android.topic41.BaseApplication;
 import com.example.android.topic41.R;
+
+
 import com.example.android.topic41.di.components.DaggerMainActivityComponent;
 import com.example.android.topic41.di.components.MainActivityComponent;
 import com.example.android.topic41.domain.util.Theme;
 import com.example.android.topic41.domain.util.Article;
-
 import com.example.android.topic41.presentation.view.adapter.Adapter;
 import com.example.android.topic41.presentation.viewmodel.ArticlesViewModel;
+
 
 import java.util.ArrayList;
 import java.util.List;

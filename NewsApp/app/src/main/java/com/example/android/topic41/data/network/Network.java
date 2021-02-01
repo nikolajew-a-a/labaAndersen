@@ -1,22 +1,15 @@
 package com.example.android.topic41.data.network;
 
-import android.annotation.SuppressLint;
-import android.util.Log;
-
 import androidx.annotation.NonNull;
-
 
 import com.example.android.topic41.domain.util.Article;
 import com.example.android.topic41.domain.util.News;
-
-import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import io.reactivex.Single;
-import retrofit2.Retrofit;
 
 public class Network implements NetworkInterface {
     private JsonPlaceHolderApi jsonPlaceHolderApi;
