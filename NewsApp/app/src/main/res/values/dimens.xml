@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="item_recyclerview_height">60dp</dimen>
+    <dimen name="title_height">40dp</dimen>
+    <dimen name="image_size">200dp</dimen>
+    <dimen name="indent">10dp</dimen>
+</resources>
