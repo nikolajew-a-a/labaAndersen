@@ -2,6 +2,8 @@ package com.example.android.topic41.di.modules;
 
 import android.app.Application;
 
+import androidx.room.Room;
+
 import com.example.android.topic41.data.database.ArticleDao;
 import com.example.android.topic41.data.database.ArticlesDatabase;
 import com.example.android.topic41.data.database.Cache;
@@ -13,11 +15,14 @@ import dagger.Provides;
 
 @Module
 public abstract class DataBaseModule {
+    private static final String DB_NAME = "database";
 
     @Singleton
     @Provides
     static ArticlesDatabase provideNewsDatabase(Application application){
-        return ArticlesDatabase.getInstance(application);
+        return Room.databaseBuilder(application.getApplicationContext(), ArticlesDatabase.class, DB_NAME)
+                .fallbackToDestructiveMigration()
+                .build();
     }
 
     @Singleton
