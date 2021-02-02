@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity() {
         refreshLayout = findViewById(R.id.refreshLayout)
         refreshLayout.setOnRefreshListener { model.loadArticles(theme) }
 
-        model.isLoadingState.observe(this) { loadingState: Boolean ->
+        model.getIsLoadingState().observe(this) { loadingState: Boolean ->
             when (loadingState) {
                 true -> { refreshLayout.isRefreshing = true
                     recyclerView.visibility = View.GONE
@@ -59,7 +59,7 @@ class MainActivity : AppCompatActivity() {
                 false -> { refreshLayout.isRefreshing = false
                     recyclerView.visibility = View.VISIBLE
                     if (!model.isShownErrorMessage.value!!) {
-                        Toast.makeText(this, model.errorMessage.value, Toast.LENGTH_LONG).show()
+                        Toast.makeText(this, model.getErrorMessage().value, Toast.LENGTH_LONG).show()
                         model.errorMessageShowed()
                     }
                 }
