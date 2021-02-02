@@ -9,6 +9,8 @@ import androidx.lifecycle.ViewModel;
 import com.example.android.topic41.domain.usecase.SingleUseCaseInterface;
 import com.example.android.topic41.domain.util.Article;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 import java.util.List;
 import io.reactivex.Observer;
